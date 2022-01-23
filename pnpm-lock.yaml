@@ -8,6 +8,12 @@ importers:
     devDependencies:
       typescript: registry.npmmirror.com/typescript/4.5.5
 
+  core:
+    specifiers:
+      typescript: ^4.4.4
+    devDependencies:
+      typescript: registry.npmmirror.com/typescript/4.5.5
+
   editor:
     specifiers:
       typescript: ^4.4.4

@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": "true",
   "scripts": {
-    "dev": "pnpm run dev -- filter @hamstor-editor/sample"
+    "dev": "pnpm run dev --filter @hamstor-editor/sample"
   },
   "devDependencies": {
     "typescript": "^4.4.4"

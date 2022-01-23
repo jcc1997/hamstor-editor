@@ -1,7 +1,10 @@
 {
-  "name": "hamstor-generator",
+  "name": "@hamstor-editor/core",
   "version": "0.0.1",
   "devDependencies": {
     "typescript": "^4.4.4"
-  }
+  },
+  "files": [
+    "src/*.ts"
+  ]
 }
