@@ -8,6 +8,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@hamstor-editor/core": "workspace:*",
     "vue": "^3.2.25",
     "hamstor-editor": "workspace:*"
   },
