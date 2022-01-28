@@ -18,15 +18,27 @@ export const template: Template = {
                     config: {
                         x: 20,
                         y: 20,
-                        width: 500,
+                        width: 0,
                         height: 20,
                         fill: 'green',
-                        stroke: 'black',
-                        strokeWidth: 2,
                     },
                     animation: {
                         attribute: 'width',
-                        values: [{ from: 0, to: 500, begin: 1000, duration: 3000 }],
+                        values: [{ from: 0, to: 100, begin: 0, duration: 1000 }],
+                    },
+                },
+                {
+                    type: 'rect',
+                    config: {
+                        x: 120,
+                        y: 20,
+                        width: 0,
+                        height: 20,
+                        fill: 'red',
+                    },
+                    animation: {
+                        attribute: 'width',
+                        values: [{ from: 0, to: 100, begin: 1000, duration: 2000 }],
                     },
                 },
             ],

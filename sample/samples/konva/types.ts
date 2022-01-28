@@ -84,10 +84,10 @@ export function isCircleMeta(shapeMeta: ShapeMeta): shapeMeta is CircleMeta {
  * 描述动画
  */
 export type Animation = {
-    from?: string | number;
-    to?: string | number;
-    begin?: string | number;
-    duration?: string | number;
+    from: number;
+    to: number;
+    begin: number;
+    duration: number;
 };
 
 /**

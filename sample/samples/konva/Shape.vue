@@ -9,8 +9,9 @@
 <script setup lang="ts">
 import { ShapeMeta } from './types';
 import { defineProps, onMounted, ref } from 'vue';
-import Konva from 'konva';
+import type Konva from 'konva';
 import { useAnimationManager } from './animations/hook';
+import { IFrame } from 'konva/lib/types';
 
 const props = defineProps<{
     shape?: ShapeMeta;
@@ -26,14 +27,31 @@ onMounted(() => {
     const shape = shapeRef.value.getNode();
     const animationMeta = props.shape.animation;
     if (animationMeta) {
-        // const animation = new Konva.Animation((frame) => {}, node.getLayer());
+        function animateAttributeWidth({
+            from,
+            to,
+            begin,
+            duration,
+        }: {
+            from: number;
+            to: number;
+            begin: number;
+            duration: number;
+        }) {
+            return function (frame: IFrame) {
+                const by = to - from;
+                return frame.time >= begin && frame.time <= begin + duration
+                    ? { width: Math.min((by * (frame.time - begin)) / duration + from, to) }
+                    : {};
+            };
+        }
+        const animationFuncs = animationMeta.values.map(animateAttributeWidth);
         animationManager.onAnimateFrame((frame) => {
+            const size = animationFuncs
+                .map((v) => v(frame))
+                .reduce((prev, curr) => Object.assign(prev, curr));
             const originSize = shape.size();
-            console.log(frame.time);
-            shape.size({
-                ...originSize,
-                width: Math.min((500 * frame.time) / 3000, 500),
-            });
+            shape.size(Object.assign(originSize, size));
         });
     }
 });
