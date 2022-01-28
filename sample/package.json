@@ -9,8 +9,13 @@
   },
   "dependencies": {
     "@hamstor-editor/core": "workspace:*",
+    "@types/stats.js": "^0.17.0",
+    "hamstor-editor": "workspace:*",
+    "konva": "^8.3.2",
+    "mitt": "^3.0.0",
+    "stats.js": "^0.17.0",
     "vue": "^3.2.25",
-    "hamstor-editor": "workspace:*"
+    "vue-konva": "3.0.0-0"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.0.0",

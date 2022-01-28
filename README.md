@@ -60,5 +60,19 @@ puppeteer 一张张截图出来 ffmpeg 合并
 
 # web 流程生成 + desktop 高清生成
 
-desktop 截图并 ffmpeg 合并
+desktop 截图并 ffmpeg 合并 / desktopCapturer 直接生成 （desktopCapturer使用的应该也是MediaDevices.getDisplayMedia）
+
 web （svg to blob to dataURL to image to canvas）+ MediaRecorder api
+Record RTC 、（https://github.com/0xdv/svg-to-video）
+
+
+# 使用 konva
+
+https://github.com/konvajs/vue-konva
+
+可以将模版数据转化为 konva 然后再渲染
+
+使用 RecordRTC 即可。
+
+逐帧出图 使用 ffmpeg.wasm 出图。
+PC端应该直接使用 ffmpeg
