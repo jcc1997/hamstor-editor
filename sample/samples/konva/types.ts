@@ -52,7 +52,7 @@ export type ShapeMeta = {
     id?: string;
     type: 'circle' | 'rect';
     config: removeFunction<removeIndex<explicit<Konva.ShapeConfig>>>;
-    animation?: Animate & AnimateTransform;
+    animations?: AnimateMeta[];
 };
 
 export type RectMeta = {
@@ -80,29 +80,20 @@ export function isCircleMeta(shapeMeta: ShapeMeta): shapeMeta is CircleMeta {
     return shapeMeta.type === 'circle';
 }
 
-/**
- * 描述动画
- */
-export type Animation = {
+export type AnimateMeta = {
+    type: 'animate' | 'transfrom' | 'motion';
+    [x: string]: number | string;
+};
+
+export type AnimateSize = {
+    type: 'animate';
+    attribute: 'width' | 'height';
     from: number;
     to: number;
     begin: number;
     duration: number;
 };
 
-/**
- * animate transform
- */
-export type AnimateTransform = {
-    // type: 'translate' | 'scale' | 'rotate' | 'skewX' | 'skewY';
-    type?: 'scale' | 'rotate';
-    values: Animation[];
-};
-
-/**
- * animate transform
- */
-export type Animate = {
-    attribute?: 'x' | 'y' | 'width' | 'height';
-    values: Animation[];
-};
+export function isAnimateSize(anim: AnimateMeta): anim is AnimateSize {
+    return anim.type === 'animate' && (anim.attribute === 'width' || anim.attribute === 'height');
+}

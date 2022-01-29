@@ -22,10 +22,16 @@ export const template: Template = {
                         height: 20,
                         fill: 'green',
                     },
-                    animation: {
-                        attribute: 'width',
-                        values: [{ from: 0, to: 100, begin: 0, duration: 1000 }],
-                    },
+                    animations: [
+                        {
+                            type: 'animate',
+                            attribute: 'width',
+                            from: 0,
+                            to: 100,
+                            begin: 0,
+                            duration: 1000,
+                        },
+                    ],
                 },
                 {
                     type: 'rect',
@@ -36,10 +42,16 @@ export const template: Template = {
                         height: 20,
                         fill: 'red',
                     },
-                    animation: {
-                        attribute: 'width',
-                        values: [{ from: 0, to: 100, begin: 1000, duration: 2000 }],
-                    },
+                    animations: [
+                        {
+                            type: 'animate',
+                            attribute: 'width',
+                            from: 0,
+                            to: 100,
+                            begin: 1000,
+                            duration: 2000,
+                        },
+                    ],
                 },
             ],
         },

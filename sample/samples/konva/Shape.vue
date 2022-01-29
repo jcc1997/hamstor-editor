@@ -7,7 +7,7 @@
     </template>
 </template>
 <script setup lang="ts">
-import { ShapeMeta } from './types';
+import { AnimateSize, isAnimateSize, ShapeMeta } from './types';
 import { defineProps, onMounted, ref } from 'vue';
 import type Konva from 'konva';
 import { useAnimationManager } from './animations/hook';
@@ -25,19 +25,9 @@ const animationManager = useAnimationManager();
 
 onMounted(() => {
     const shape = shapeRef.value.getNode();
-    const animationMeta = props.shape.animation;
-    if (animationMeta) {
-        function animateAttributeWidth({
-            from,
-            to,
-            begin,
-            duration,
-        }: {
-            from: number;
-            to: number;
-            begin: number;
-            duration: number;
-        }) {
+    const animations = props.shape.animations;
+    if (animations && animations.length > 0) {
+        function animateAttributeWidth({ from, to, begin, duration }: AnimateSize) {
             return function (frame: IFrame) {
                 const by = to - from;
                 return frame.time >= begin && frame.time <= begin + duration
@@ -45,7 +35,7 @@ onMounted(() => {
                     : {};
             };
         }
-        const animationFuncs = animationMeta.values.map(animateAttributeWidth);
+        const animationFuncs = animations.filter(isAnimateSize).map(animateAttributeWidth);
         animationManager.onAnimateFrame((frame) => {
             const size = animationFuncs
                 .map((v) => v(frame))
